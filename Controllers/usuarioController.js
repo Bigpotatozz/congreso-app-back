@@ -53,14 +53,14 @@ const obtenerParticipante = async (req, res) => {
 
     const participante = await pool.query(queryParticipante, [id]);
 
-    if (participante.length < 1) {
+    if (participante.rows.length < 1) {
       return res.status(404).send({
         message: "Participante no encontrado",
       });
     }
 
     return res.status(200).send({
-      participante: participante.rows[0],
+      participante: participante.rows,
     });
   } catch (e) {
     console.log(e);
