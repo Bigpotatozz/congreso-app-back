@@ -3,4 +3,5 @@ const { Server } = require("./Models/Server.js");
 
 dotenv.config();
 const servidor = new Server();
-servidor.listen();
+
+module.exports = servidor.app();
