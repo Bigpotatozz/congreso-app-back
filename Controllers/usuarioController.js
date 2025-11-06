@@ -73,7 +73,7 @@ const obtenerParticipante = async (req, res) => {
 const obtenerParticipantePorNombre = async (req, res) => {
   const { query } = req.query;
   try {
-    const queryParticipante = `SELECT * FROM participante where nombre like $1`;
+    const queryParticipante = `SELECT * FROM participante where nombre ILIKE $1`;
     const participante = await pool.query(queryParticipante, [`%${query}%`]);
 
     if (participante.rows.length < 1) {
