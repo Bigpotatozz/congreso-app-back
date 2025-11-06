@@ -7,7 +7,7 @@ const obtenerParticipantes = async (req, res) => {
     const participantes = await pool.query(participantesQuery);
 
     return res.status(200).send({
-      participantes: participantes,
+      participantes: participantes.rows,
     });
   } catch (e) {
     console.log(e);
@@ -60,7 +60,7 @@ const obtenerParticipante = async (req, res) => {
     }
 
     return res.status(200).send({
-      participante: participante[0],
+      participante: participante,
     });
   } catch (e) {
     console.log(e);
