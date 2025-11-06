@@ -60,7 +60,7 @@ const obtenerParticipante = async (req, res) => {
     }
 
     return res.status(200).send({
-      participante: participante,
+      participante: participante.rows,
     });
   } catch (e) {
     console.log(e);
@@ -76,14 +76,14 @@ const obtenerParticipantePorNombre = async (req, res) => {
     const queryParticipante = `SELECT * FROM participante where nombre like $1`;
     const participante = await pool.query(queryParticipante, [query]);
 
-    if (participante.length < 1) {
+    if (participante.rows.length < 1) {
       return res.status(404).send({
         message: "Participante no encontrado",
       });
     }
 
     return res.status(200).send({
-      participante: participante[0],
+      participante: participante.rows,
     });
   } catch (e) {
     console.log(e);
