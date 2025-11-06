@@ -83,7 +83,7 @@ const obtenerParticipantePorNombre = async (req, res) => {
     }
 
     return res.status(200).send({
-      participante: participante.rows[0],
+      participante: participante.rows,
     });
   } catch (e) {
     console.log(e);
